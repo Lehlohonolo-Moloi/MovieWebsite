@@ -30,7 +30,7 @@ values('Cashel','Colaizzi'),
       ('Adon','Armbrust'),
       ('Hakeem','Britain'),
       ('Jaycee','Mccants'),
-      ('Jeovany','Gerosa');
+      ('Jeovany','Gerosa'),
       ('Frank', 'Darabont');
       
 insert into actor(first_name,last_name,date_of_birth)
