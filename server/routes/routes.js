@@ -3,4 +3,6 @@ module.exports = (app) => {
 
     app.get('/movies', movieController.findAll);
     app.get('/movies/:genre', movieController.findByGenre);
+    app.get('/movies/year', movieController.findByYear);
+    app.get('/movies/external/search', movieController.externalAPI);
 }

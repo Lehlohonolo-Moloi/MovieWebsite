@@ -1,7 +1,8 @@
 const connection = require('../services/db');
+const fetchMovie = require('../controllers/FetchMovie');
 
 exports.findAll = (req, res) => {
-    connection.query('SELECT * FROM movie' ,
+    connection.query('SELECT m.movie_name AS `Movie Name`, m.release_date AS `Release Date`, g.description AS `Genre` FROM Movie m INNER JOIN Genre g ON m.genre_id = g.genre_id' ,
         function (err, results, fields){
             if(err) throw err;
             res.end(JSON.stringify(results));
@@ -9,7 +10,6 @@ exports.findAll = (req, res) => {
 };
 
 exports.findByGenre = (req, res) => {
-
     let genre = 0;
     switch(req.params.genre){
         case "Action":
@@ -45,11 +45,31 @@ exports.findByGenre = (req, res) => {
         case "Horror":
             genre = 11;
     }
-
-    connection.query('select * from movie where genre_id=?',
+    //This query returns the required records in MySQL Workbench but return nothing here. Please look into it with me if you can
+    connection.query('SELECT m.movie_name AS `Movie Name`, m.release_date AS `Release Date`, g.description AS `Genre` FROM Movie m INNER JOIN Genre g ON m.genre_id = g.genre_id WHERE m.genre_id=?',
         genre,
         function (error, results, fields) {
             if (error) throw error;
             res.end(JSON.stringify(results));
         });
 };
+
+exports.findByYear = (req, res) => {
+    let year = req.query.year;
+    connection.query('SELECT m.movie_name AS `Movie Name`, m.release_date AS `Release Date`, g.description AS `Genre` FROM Movie m INNER JOIN Genre g ON m.genre_id = g.genre_id WHERE EXTRACT(YEAR FROM m.release_date)=?',
+        year,
+        function (error, results, fields) {
+            if (error) throw error;
+            res.end(JSON.stringify(results));
+        });
+}
+
+exports.externalAPI = (request, response) => {
+    let movieName = request.query.name; //If the movie name has spaces in it, those spaces need to be replace with '%20' (frontend)
+    var movie;
+    fetchMovie.extMovie(movieName).then(value => {
+        movie = value;
+    });
+    setTimeout(() => console.log(movie), 2000);
+    setTimeout(() => response.end(JSON.stringify(movie)), 2000);
+}
