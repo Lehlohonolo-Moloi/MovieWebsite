@@ -2,7 +2,7 @@ const connection = require('../services/db');
 const fetchMovie = require('../controllers/FetchMovie');
 
 exports.findAll = (req, res) => {
-    connection.query('SELECT m.movie_name AS `Movie Name`, m.release_date AS `Release Date`, g.description AS `Genre` FROM Movie m INNER JOIN Genre g ON m.genre_id = g.genre_id' ,
+    connection.query('SELECT m.movie_name AS `MovieName`, m.release_date AS `ReleaseDate`, g.description AS `Genre` FROM Movie m INNER JOIN Genre g ON m.genre_id = g.genre_id' ,
         function (err, results, fields){
             if(err) throw err;
             res.end(JSON.stringify(results));
