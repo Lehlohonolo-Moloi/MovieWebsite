@@ -20,7 +20,7 @@ app.use(express.urlencoded({extended:true}));
 
 const port = process.env.PORT;
 
-require('./routes/routes')(app);
+routes(app);
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port} ...`);
