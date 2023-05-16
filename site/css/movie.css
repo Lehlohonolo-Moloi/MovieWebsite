@@ -48,3 +48,13 @@ header a:hover{
     width: 300px;
 }
 
+.loginContainer, .signupContainer {
+    margin-left: 30%;
+    margin-top: 10%;
+}
+
+h1 {
+    text-align: center;
+    margin-left: 30%;
+}
+
