@@ -6,5 +6,5 @@ module.exports = (app) => {
     app.get('/movies/:genre', movieController.findByGenre);
     app.get('/movies/year', movieController.findByYear);
     app.get('/movies/external/search', movieController.externalAPI);
-    app.get(/user/credentials, userAuthentication.authenticate);
+    app.get('/user/credentials', userAuthentication.authenticate);
 }
