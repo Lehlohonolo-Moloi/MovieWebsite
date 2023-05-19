@@ -53,11 +53,14 @@ CREATE TABLE `Movie_Director` (
   PRIMARY KEY (`director_id`, `movie_id`)
 );
 
+<<<<<<< HEAD
 CREATE TABLE `User_Credentials` (
   `username` varchar(255) NOT NULL PRIMARY KEY,
   `name` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL
 );
+=======
+>>>>>>> 36d6245ab86b10521329845b895aa0f5fe23e5b8
 
 ALTER TABLE `Movie_Actor` ADD FOREIGN KEY (`actor_id`) REFERENCES `Actor` (`actor_id`);
 
