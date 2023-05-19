@@ -38,6 +38,23 @@ header a:hover{
     justify-content: space-between;
 }
 
+#detailContainer{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    gap: 2rem;
+    justify-content: center;
+    margin: 2rem;
+}
+
+.pictureBox{
+    
+}
+
+.detailBox{
+    
+}
+
 .card{
     background-color: lightgray;
     border-radius: 3px;
@@ -46,6 +63,24 @@ header a:hover{
     position: relative;
     margin: 1rem;
     width: 300px;
+}
+
+.card_content{
+    padding:1rem;
+    text-align: center;
+}
+
+.btn{
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    width: 100%;
+}
+
+.btn:hover{
+    background-color: lightblue;
 }
 
 .loginContainer, .signupContainer {

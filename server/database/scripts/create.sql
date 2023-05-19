@@ -21,7 +21,8 @@ CREATE TABLE `Movie` (
   `movie_summary` varchar(255),
   `release_date` date,
   `genre_id` integer,
-  `prod_id` integer
+  `prod_id` integer,
+  `image_url` varchar(255) 
 );
 
 CREATE TABLE `Director` (
@@ -55,7 +56,7 @@ CREATE TABLE `Movie_Director` (
 CREATE TABLE `User_Credentials` (
   `username` varchar(255) NOT NULL PRIMARY KEY,
   `name` varchar(50) NOT NULL,
-  `password` varchar(255) NOT NULL;
+  `password` varchar(255) NOT NULL
 );
 
 ALTER TABLE `Movie_Actor` ADD FOREIGN KEY (`actor_id`) REFERENCES `Actor` (`actor_id`);
