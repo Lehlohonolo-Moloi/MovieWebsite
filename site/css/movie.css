@@ -1,5 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand:400,700');
+
 :root{
     --primary-colour: black;
+}
+
+body{
+    font-family: 'Quicksand', serif;
+    padding: 1rem;
+    letter-spacing: 0;
 }
 
 header{
@@ -33,9 +41,10 @@ header a:hover{
 }
 
 #cardContainer{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    align-items: stretch;
 }
 
 #detailContainer{
@@ -92,4 +101,3 @@ h1 {
     text-align: center;
     margin-left: 30%;
 }
-
