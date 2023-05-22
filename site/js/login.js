@@ -10,7 +10,8 @@ function signIn(){
         "redirect_uri":"http://127.0.0.1:5500/site/index.html",
         "response_type":"token",
         "scope": "https://www.googleapis.com/auth/userinfo.profile",
-        "include_granted_scopes":'true'
+        "include_granted_scopes":'true',
+        'state':'LoggedIn'
     }
 
     for(var p in params){
