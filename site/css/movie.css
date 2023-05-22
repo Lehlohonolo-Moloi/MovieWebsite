@@ -92,12 +92,11 @@ header a:hover{
     background-color: lightblue;
 }
 
-.loginContainer, .signupContainer {
+.loginContainer {
     margin-left: 30%;
     margin-top: 10%;
 }
 
 h1 {
     text-align: center;
-    margin-left: 30%;
 }
