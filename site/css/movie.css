@@ -49,19 +49,10 @@ header a:hover{
 
 #detailContainer{
     display: flex;
-    flex-wrap: nowrap;
     flex-direction: row;
     gap: 2rem;
     justify-content: center;
     margin: 2rem;
-}
-
-.pictureBox{
-    
-}
-
-.detailBox{
-    
 }
 
 .card{
@@ -71,7 +62,11 @@ header a:hover{
     overflow: hidden;
     position: relative;
     margin: 1rem;
-    width: 300px;
+    max-width: 100%;
+}
+
+img{
+    width: 100%;
 }
 
 .card_content{
@@ -99,4 +94,51 @@ header a:hover{
 
 h1 {
     text-align: center;
+}
+
+.logging{
+    cursor: pointer;
+    border-radius: 50px;
+    border: 2px solid #22254b;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+}
+
+/*Browser is 600px and below*/
+@media (max-width: 37.5rem){
+    #detailContainer{
+        flex-direction: column;
+        margin: 1rem;
+        gap:0;
+    }
+    .pictureBox{
+        text-align: center;
+    }
+
+    #search {
+        width: 4rem;
+    }
+
+    #logging{
+        width: 3rem;
+    }
+
+    .detailBox{
+        justify-content: center;
+
+    }
+
+    header{
+        text-align: center;
+    }
+
+    header a{
+        margin-left: 0;
+        font-size: 1.3rem;
+    }
+}
+
+/*Browser is bigger than 601px*/
+@media (min-width: 38rem) {
+    
 }
