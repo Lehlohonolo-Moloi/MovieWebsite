@@ -21,7 +21,8 @@ CREATE TABLE `Movie` (
   `movie_summary` varchar(255),
   `release_date` date,
   `genre_id` integer,
-  `prod_id` integer
+  `prod_id` integer,
+  `image_url` varchar(255) 
 );
 
 CREATE TABLE `Director` (

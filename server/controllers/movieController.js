@@ -2,11 +2,18 @@ const connection = require('../services/db');
 const fetchMovie = require('../controllers/FetchMovie');
 
 exports.findAll = (req, res) => {
-    connection.query('SELECT m.movie_name AS `MovieName`, m.release_date AS `ReleaseDate`, g.description AS `Genre` FROM Movie m INNER JOIN Genre g ON m.genre_id = g.genre_id' ,
+    connection.query('SELECT m.movie_id AS `MovieId`,m.movie_name AS `MovieName`, m.release_date AS `ReleaseDate`,m.image_url AS `Url`, g.description AS `Genre` FROM Movie m INNER JOIN Genre g ON m.genre_id = g.genre_id' ,
         function (err, results, fields){
             if(err) throw err;
             res.end(JSON.stringify(results));
         });
+};
+
+exports.findOne = (req, res) => {
+    connection.query('select m.movie_name AS `MovieName`,m.movie_summary AS MovieSummary, m.release_date AS ReleaseDate, g.description AS `Genre`, p.prod_name AS Production,m.image_url AS `Url` from Movie m INNER JOIN Genre g on m.genre_id = g.genre_id INNER JOIN Production_Company p ON m.prod_id = p.prod_id where m.movie_id=?', [req.params.movieId], function(err, results, fields){
+        if(err) throw err;
+        res.end(JSON.stringify(results));
+    });
 };
 
 exports.findByGenre = (req, res) => {
