@@ -16,7 +16,6 @@ let params = {};
     if (localStorage.getItem('state') !== 'LoggedIn'){
         location.href = "http://127.0.0.1:5500/site/login.html";
     }
-    console.log(localStorage.getItem('state'));
 
     //hide access token (mask url)
     window.history.pushState({}, document.title, "/site/index.html");

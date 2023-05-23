@@ -16,6 +16,24 @@ exports.findOne = (req, res) => {
     });
 };
 
+exports.actorsByMovieId = (req, res) => {
+    connection.query('SELECT a.first_name, a.last_name FROM Actor a INNER JOIN Movie_Actor ma ON a.actor_id = ma.actor_id INNER JOIN Movie m ON ma.movie_id = m.movie_id WHERE m.movie_id=?',
+        [req.params.movieId],
+        function (error, results, fields) {
+            if (error) throw error;
+            res.end(JSON.stringify(results));
+        });
+}
+
+exports.directorsByMovieId = (req, res) => {
+    connection.query('SELECT d.first_name, d.last_name FROM Director d INNER JOIN Movie_Director md ON d.director_id = md.director_id INNER JOIN Movie m ON md.director_id = m.movie_id WHERE m.movie_id=?',
+        [req.params.movieId],
+        function (error, results, fields) {
+            if (error) throw error;
+            res.end(JSON.stringify(results));
+        });
+}
+
 exports.findByGenre = (req, res) => {
     let genre = 0;
     switch(req.params.genre){
@@ -68,6 +86,5 @@ exports.externalAPI = (request, response) => {
     fetchMovie.extMovie(movieName).then(value => {
         movie = value;
     });
-    setTimeout(() => console.log(movie), 2000);
     setTimeout(() => response.end(JSON.stringify(movie)), 2000);
 }
