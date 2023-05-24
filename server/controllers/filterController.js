@@ -5,7 +5,8 @@ SELECT movie.movie_name MovieName,
        movie.release_date ReleaseDate,
        genre.description Genre,
        production_company.prod_name 'Production Company',
-       CONVERT(YEAR(movie.release_date), CHAR) Year
+       CONVERT(YEAR(movie.release_date), CHAR) Year,
+       movie.image_url Url
 FROM movie, genre, production_company
 WHERE movie.genre_id = genre.genre_id
   AND movie.prod_id = production_company.prod_id\n`;
@@ -41,7 +42,6 @@ const createFilterQuery = (json, searchPhrase) =>{
 
     if(searchPhrase)
         query += `  AND ${LABELS_TO_DB_COLUMNS.get('moviename')} REGEXP '${searchPhrase}'`;
-    console.log(query);
     return query;
 };
 
@@ -49,7 +49,6 @@ exports.getMatchingMovies = (req, res) => {
     connection.query(createFilterQuery(JSON.stringify(req.body.filters), req.body.search),
         function (err, results, fields){
             if(err) throw err;
-            console.log(JSON.stringify(results));
             res.end(JSON.stringify(results));
     });
 };
