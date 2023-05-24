@@ -1,5 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand:400,700');
+
 :root{
     --primary-colour: black;
+}
+
+body{
+    font-family: 'Quicksand', serif;
+    padding: 1rem;
+    letter-spacing: 0;
 }
 
 header{
@@ -33,9 +41,27 @@ header a:hover{
 }
 
 #cardContainer{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    align-items: stretch;
+}
+
+#detailContainer{
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    gap: 2rem;
+    justify-content: center;
+    margin: 2rem;
+}
+
+.pictureBox{
+    
+}
+
+.detailBox{
+    
 }
 
 .card{
@@ -48,13 +74,29 @@ header a:hover{
     width: 300px;
 }
 
-.loginContainer, .signupContainer {
+.card_content{
+    padding:1rem;
+    text-align: center;
+}
+
+.btn{
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    width: 100%;
+}
+
+.btn:hover{
+    background-color: lightblue;
+}
+
+.loginContainer {
     margin-left: 30%;
     margin-top: 10%;
 }
 
 h1 {
     text-align: center;
-    margin-left: 30%;
 }
-
