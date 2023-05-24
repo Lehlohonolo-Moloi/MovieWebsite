@@ -59,5 +59,8 @@ const getFilteredMovies = (map, searchKey) => {
         body:JSON.stringify({filters:filterJSON, search:searchKey})
     })
     .then(response => response.json())
-    .then(showMovies(data));
+    .then(data => {
+        document.getElementById("cardContainer").innerHTML = '';
+        showMovies(data);
+    })
 }
