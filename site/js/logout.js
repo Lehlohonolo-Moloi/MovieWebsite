@@ -11,10 +11,10 @@ let params = {};
     if(Object.keys(params).length > 0){
       localStorage.setItem('authInfo',JSON.stringify(params));
       let data = JSON.parse(localStorage.getItem('authInfo'));
-      localStorage.setItem('state', data['https://main.d2fwt90m9t08mu.amplifyapp.com/index.html#state']);
+      localStorage.setItem('state', data['http://127.0.0.1:5500/site/index.html#state']);
     }
     if (localStorage.getItem('state') !== 'LoggedIn'){
-        location.href = "https://main.d2fwt90m9t08mu.amplifyapp.com/login.html";
+        location.href = "http://127.0.0.1:5500/site/login.html";
     }
 
     //hide access token (mask url)
@@ -30,7 +30,7 @@ let params = {};
         }
       })
       .then((data) => {
-        location.href = "https://main.d2fwt90m9t08mu.amplifyapp.com/login.html";
+        location.href = "http://127.0.0.1:5500/site/login.html";
       })
 
       localStorage.setItem('state', "LoggedOut");
