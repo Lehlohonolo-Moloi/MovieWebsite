@@ -1,0 +1,10 @@
+#filters-section div {
+    display:inline-block;
+    margin:3em;
+    width:20em;
+    margin-top: 0;
+}
+
+#filters-section p {
+    display:inline-block;
+}
