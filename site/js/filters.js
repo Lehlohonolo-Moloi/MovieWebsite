@@ -59,18 +59,5 @@ const getFilteredMovies = (map, searchKey) => {
         body:JSON.stringify({filters:filterJSON, search:searchKey})
     })
     .then(response => response.json())
-    .then(data =>{
-        const container = document.getElementById("cardContainer");
-        container.innerHTML = '';
-        data.forEach(movie=>{
-            const card = document.createElement("article");
-            card.classList.add("card");
-            card.innerHTML = `
-            <img src="${""}", alt="${""}"/>
-            <h3>${movie.MovieName}</h3>
-            <p>${movie.Genre}</p>
-            `;
-            container.appendChild(card);
-        });
-    });
+    .then(showMovies(data));
 }
