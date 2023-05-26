@@ -1,22 +1,22 @@
 const connection = require('../services/db');
 
 const BASE_QUERY = `
-SELECT movie.movie_name MovieName,
-       movie.release_date ReleaseDate,
-       genre.description Genre,
-       production_company.prod_name 'Production Company',
-       CONVERT(YEAR(movie.release_date), CHAR) Year,
-       movie.image_url Url
-FROM movie, genre, production_company
-WHERE movie.genre_id = genre.genre_id
-  AND movie.prod_id = production_company.prod_id\n`;
+SELECT movie_name MovieName,
+       release_date ReleaseDate,
+       description Genre,
+       prod_name 'Production Company',
+       CONVERT(YEAR(release_date), CHAR) Year,
+       image_url Url
+FROM Movie, Genre, Production_Company
+WHERE Movie.genre_id = Genre.genre_id
+  AND Movie.prod_id = Production_Company.prod_id\n`;
 
 const LABELS_TO_DB_COLUMNS = new Map([
-    ['genre', 'genre.description'],
-    ['year', 'CONVERT(YEAR(movie.release_date), CHAR)'],
-    ['production company', 'production_company.prod_name'],
-    ['moviesummary', 'movie.movie_summary'],
-    ['moviename', 'movie.movie_name']
+    ['genre', 'Genre.description'],
+    ['year', 'CONVERT(YEAR(Movie.release_date), CHAR)'],
+    ['production company', 'Production_Company.prod_name'],
+    ['moviesummary', 'Movie.movie_summary'],
+    ['moviename', 'Movie.movie_name']
 ]);
 
 const createFilterQuery = (json, searchPhrase) =>{
