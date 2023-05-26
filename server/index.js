@@ -2,6 +2,9 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const routes = require('./routes/routes');
+const movieController = require('./controllers/movieController');
+const filterController = require('./controllers/filterController');
+
 
 const app = express();
 
@@ -20,10 +23,22 @@ app.use(express.urlencoded({extended:true}));
 
 const port = process.env.PORT;
 
-routes(app);
+//routes(app);
 
-app.listen(port, () => {
+
+
+    app.get('/movies', movieController.findAll);
+    app.get('/movies/:movieId', movieController.findOne);
+    app.post('/movies', filterController.getMatchingMovies);
+    app.get('/movies/:genre', movieController.findByGenre);
+    app.get('/movies/actors/:movieId', movieController.actorsByMovieId);
+    app.get('/movies/directors/:movieId', movieController.directorsByMovieId);
+    app.get('/movies/external/search', movieController.externalAPI);
+    app.get('/values', filterController.getValuesInColumn);
+
+/*app.listen(port, () => {
     console.log(`Server is running on port ${port} ...`);
 });
+*/
 
-module.exports = app;
+module.exports.handler = app;
