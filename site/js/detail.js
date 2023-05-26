@@ -1,5 +1,22 @@
 const container = document.getElementById("detailContainer");
 
+document.getElementById("userInfoDetail").innerText = localStorage.getItem('username');
+
+function logout(){
+    let info = JSON.parse(localStorage.getItem('authInfo'));
+    fetch("https://oauth2.googleapis.com/revoke?token=" + info['access_token'], {
+      method:'POST',
+      headers:{
+        'Content-type':'application/x-www-form-urlencoded'
+      }
+    })
+    .then((data) => {
+      location.href = "http://127.0.0.1:5500/site/login.html";
+    })
+
+    localStorage.setItem('state', "LoggedOut");
+  }
+
 const url = window.location.search;
 const urlParams = new URLSearchParams(url);
 const movieId = urlParams.get('movieId');
