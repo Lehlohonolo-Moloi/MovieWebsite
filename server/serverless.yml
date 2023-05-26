@@ -12,8 +12,8 @@ provider:
 custom:
   stages:
     - dev
-serverless-offline:
-  noPrependStageInUrl: true
+# serverless-offline:
+#   noPrependStageInUrl: true
 
 plugins:
   - serverless-stage-manager
