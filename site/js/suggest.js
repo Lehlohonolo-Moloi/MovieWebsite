@@ -2,13 +2,13 @@ const detailContainer = document.getElementById("detailContainer");
 const suggestions = document.getElementById("suggestions");
 
 async function suggestMovies() {
-  const movieRes = await fetch(`http://localhost:3000/movies/${movieId}`);
+  const movieRes = await fetch(`https://0tkppuy4r3.execute-api.us-east-1.amazonaws.com/deployment/movies/${movieId}`);
   const movie = await movieRes.json();
   const genre = await movie[0].Genre;
-  const response = await fetch(`http://localhost:3000/movies/${genre}`);
+  const response = await fetch(`https://0tkppuy4r3.execute-api.us-east-1.amazonaws.com/deployment/movies/${genre}`);
   const responseData = await response.json();
   if (responseData.length == 0) {
-    const moviesRes = fetch("http://localhost:3000/movies");
+    const moviesRes = fetch("https://0tkppuy4r3.execute-api.us-east-1.amazonaws.com/deployment/movies");
     const movies = (await moviesRes).json()
     suggest(await movies, genre, false)
   } else {

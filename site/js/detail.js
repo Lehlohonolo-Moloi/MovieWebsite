@@ -24,7 +24,7 @@ const movieId = urlParams.get('movieId');
 getMovieDetails()
 
 async function getMovieDetails(){
-    const response = await fetch(`http://localhost:3000/movies/${movieId}`);
+    const response = await fetch(`https://0tkppuy4r3.execute-api.us-east-1.amazonaws.com/deployment/movies/${movieId}`);
     const responseData = await response.json();
 
     showMovieDetails(await responseData);

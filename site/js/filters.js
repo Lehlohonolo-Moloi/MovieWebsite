@@ -10,7 +10,7 @@ searchElement.onkeyup = ()=>{
 }
 
 const addFilters = label => {
-   fetch(`http://localhost:3000/values?column=${label}`)
+   fetch(`https://0tkppuy4r3.execute-api.us-east-1.amazonaws.com/deployment/values?column=${label}`)
    .then(response => response.json())
    .then(values => {
         const map = new Map();
@@ -53,7 +53,7 @@ const getFilteredMovies = (map, searchKey) => {
         if (activeFilters.length != 0)
             filterJSON[column] = activeFilters;
     }
-    fetch("http://localhost:3000/movies", {
+    fetch("https://0tkppuy4r3.execute-api.us-east-1.amazonaws.com/deployment/movies", {
         "method":"POST",
         headers: { "Content-Type": "application/json"},
         body:JSON.stringify({filters:filterJSON, search:searchKey})
