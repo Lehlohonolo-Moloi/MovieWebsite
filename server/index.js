@@ -6,9 +6,17 @@ const routes = require('./routes/routes');
 const app = express();
 
 //app.use('/api', routes);
+const allowedOrigins = ['https://d3ql6e0lw3omji.cloudfront.net',  'http://advanced-movie-search.p.rapidapi.com'];
 
 const corsOptions = {
-    origin: ["https://d3ql6e0lw3omji.cloudfront.net",  "http://advanced-movie-search.p.rapidapi.com"]
+    origin: function (origin, callback){
+        if(allowedOrigins.indexOf(origin) !== -1){
+            callback(null, true)
+        }else{
+            callback(new Error('Not allowed by CORS'))
+        }
+        
+    }
 };
 
 app.use(cors(corsOptions));
