@@ -8,7 +8,7 @@ const app = express();
 //app.use('/api', routes);
 
 const corsOptions = {
-    origin: ["http://127.0.0.1:5500",  "http://advanced-movie-search.p.rapidapi.com"]
+    origin: ["https://d3ql6e0lw3omji.cloudfront.net",  "http://advanced-movie-search.p.rapidapi.com"]
 };
 
 app.use(cors(corsOptions));
